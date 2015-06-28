@@ -1,5 +1,5 @@
 # tokyometro-livemap
-[product for tokyometro application contest](https://livemap-of-tokyometro.herokuapp.com/)
+[product for tokyometro application contest](http://tokyometro-livemap.avion-amphibie.com/)
 
 ##ToDo
 * refactoring
