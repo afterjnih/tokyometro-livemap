@@ -1,6 +1,8 @@
 require 'mysql'
 require 'httpclient'
 require 'json'
+require 'dotenv'
+Dotenv.load
 # require 'rack/env'
 # use Rack::Env unless ENV['RACK_ENV'] == 'production'
 
@@ -439,6 +441,12 @@ def get_trainlocation
             tmp_h["offset"] = '0%'
             tmp_h["coordinateNum"] = 0
           end
+
+         if tmp_h["odpt:toStation"] == nil
+           tmp_h["offset"] = 0
+	 else
+	   tmp_h["offset"] = 0.5
+	 end	  
 
           statement = connection.prepare("SELECT latlng_number From latlngtable WHERE line_id = ? ORDER BY latlng_number DESC")
           tmp_h["allCoordinateNum"] = statement.execute(tmp_h["line"]).fetch[0]-1

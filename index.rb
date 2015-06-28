@@ -5,6 +5,7 @@ require 'json'
 
 require './get_station_icons'
 require './getlatlngs'
+require './send_json'
 require './gettrain_inf'
 
 require 'rack/env' if development?

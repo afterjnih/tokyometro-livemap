@@ -11,6 +11,7 @@ function init() {
 	L
 			.tileLayer(
 					'http://{s}.tiles.mapbox.com/v3/afterjnih.k14dcmco/{z}/{x}/{y}.png',
+					// 'http://a.tiles.mapbox.com/v4/afterjnih.k14dcmco/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiYWZ0ZXJqbmloIiwiYSI6InRQUFRDLTAifQ.kQA0HidrLU644APZLdIO2g',
 
 					{
 						attribution : 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>, Developer <a href="https://twitter.com/koji_s_o">Koji Ota</a>',
@@ -138,7 +139,8 @@ function refreshIcon(map, g, svg) {
 	$("#loading").fadeIn();
 	// var url = 'http://localhost:4567/sendjson'
 		 // var url = 'http://localhost:4567/gettraininf'
-		 var url = '/gettraininf';
+		 // var url = '/gettraininf';
+		 var url = '/sendjson';
 	$
 			.ajax({
 				type : 'GET',
@@ -170,12 +172,12 @@ function refreshIcon(map, g, svg) {
 									if (premadeMarker == null) {
 										var offset = 0;
 										if (train["direction"] == "forward") {
-											offset = parseInt(train["offset"]
-													.slice(0, -1)) / 100;
+											// offset = parseInt(train["offset"].slice(0, -1)) / 100;
+                      offset = train["offset"];
 											coordinateNum = train["coordinateNum"];
 										} else {
-											offset = (100 - parseInt(train["offset"]
-													.slice(0, -1))) / 100;
+											// offset = (100 - parseInt(train["offset"].slice(0, -1))) / 100;
+                      offset = train["offset"];
 											coordinateNum = train["allCoordinateNum"]
 													- train["coordinateNum"];
 										}
@@ -226,12 +228,12 @@ function refreshIcon(map, g, svg) {
 													.remove();
 											var offset = 0;
 											if (train["direction"] == "forward") {
-												offset = parseInt(train["offset"]
-														.slice(0, -1)) / 100;
+												//offset = parseInt(train["offset"].slice(0, -1)) / 100;
+       offset = train["offset"];
 												coordinateNum = train["coordinateNum"];
 											} else {
-												offset = (100 - parseInt(train["offset"]
-														.slice(0, -1))) / 100;
+												//offset = (100 - parseInt(train["offset"].slice(0, -1))) / 100;
+       offset = train["offset"];
 												coordinateNum = train["allCoordinateNum"]
 														- train["coordinateNum"];
 											}
